@@ -36,15 +36,6 @@ the `:` at the end.
   the `authorized_keys` file using `cat yourkey.pub >>
 .ssh/authorized_keys`. You can then delete the public key from the server
 using `rm yourkey.pub`.
-+ Read and then run the following command:
-```sh
-# Backup the original configuration
-sudo cp /etc/ssh/sshd_config $HOME/sshd_config.bak && \
-# Deploy our new configuration
-curl https://raw.githubusercontent.com/foobarberis/42-vm-tutorial/main/sshd_config >| /etc/ssh/sshd_config && \
-# Restart sshd
-sudo systemctl restart sshd
-```
 + To make connecting to your VM easier, create a file called `config` in
   `.ssh` folder on your computer containing the following:
 ```sh
@@ -55,7 +46,6 @@ Host ubuntu # Replace with whatever name you see fit
 ```
 
 ## Automatic login
-
 From [this forum post](https://forums.debian.net/viewtopic.php?t=123694).
 
 For automatic login, run this command (as root):
@@ -74,26 +64,19 @@ ExecStart=-/sbin/agetty --autologin YOURUSERNAME --noclear %I $TERM
 
 Replace YOURUSERNAME with your user name.
 
-## Automatic `startx`
-For automatic `startx` add this snippet to the end of the file at `~/.profile`:
-
-```
-[ "$(tty)" = "/dev/tty1" ] && exec startx
-```
-
-The `.profile` in this repository already contains the line above. If you
-don't want to run `startx` when booting the VM, just comment the line.
-
 ## Deploy the VM
-This repository contains a script called `deploy.sh` which will take care of
-most of the installation process. **Read the script before you run it.** Upon
-first login you can launch the following command to setup your VM:
-```sh
-curl https://raw.githubusercontent.com/foobarberis/42-vm-tutorial/main/deploy.sh >> deploy.sh && \
-chmod +x deploy.sh && ./deploy.sh
-```
+This repository contains a script called `deploy.sh` which will take care
+of most of the installation process. **Read the script before you run the
+command below.**
 
-When the script is done, reboot the VM using `sudo reboot`.
+```sh
+VERSION=0.1 && \
+wget https://github.com/foobarberis/42-vm-tutorial/releases/download/0.1/$VERSION.tar.gz && \
+tar xvf $VERSION.tar.gz && cd $VERSION && chmod +x deploy.sh && ./deploy.sh
+```
+When the script is done, reboot the VM using `sudo reboot`. You should now
+be able to SSH into your VM using `ssh ubuntu`.
+
 ## Git
 + First of all go to this URL: https://github.com/settings/tokens
 + Click on `Generate new token` and pick `Generate new token (classic)`.
@@ -111,7 +94,7 @@ git config --global user.name "Your Name"
 ```
 + Now try to clone one of your private repositories or push to one of your
   repositories. Git will ask you for you username and then for your
-password. **When asked for the passowrd paste the token you generated
+password. **When asked for the password paste the token you generated
 earlier.**
 + You should now be able to use git without having to re-enter your
   credentials.

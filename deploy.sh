@@ -6,6 +6,13 @@ sudo systemctl mask apt-daily-upgrade.service
 sudo systemctl disable apt-daily.timer
 sudo systemctl mask apt-daily.service
 
+# Backup the original configuration
+sudo cp /etc/ssh/sshd_config $HOME/sshd_config.bak && \
+# Deploy our new configuration
+sudo cp ./sshd_config /etc/ssh/sshd_config && \
+# Restart sshd
+sudo systemctl restart sshd
+
 # Update the system and install software
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install -y gcc clang lldb gdb clang-format valgrind tmux git make vim python3 python3-pip xorg openbox libxext-dev libbsd-dev
@@ -13,6 +20,8 @@ sudo apt install -y gcc clang lldb gdb clang-format valgrind tmux git make vim p
 # Install Norminette (to update use `python3 -m pip install --upgrade norminette')
 python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
 
-git clone https://github.com/foobarberis/42-vm-tutorial /tmp/42-vm-tutorial && cd /tmp/42-vm-tutorial && \
 # Deploy new dotfiles
 cp ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./.profile $HOME/
+
+# Reboot
+echo 'Done! You can now reboot using sudo reboot'
