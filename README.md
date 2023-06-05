@@ -1,10 +1,4 @@
 # 42-vm-tutorial
-
-+ TODO Proofread
-+ Why are gnome-terminal and urxvt pulled ?
-+ Simplify `Deploy the VM' steps
-+ Make Xterm launch when selecting Terminal emulator from Openbox menu
-+
 This tutorial will guide you through the installation process of a Linux VM
 intended to be used as a programming environment.
 
