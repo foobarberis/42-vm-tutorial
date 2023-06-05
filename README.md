@@ -1,21 +1,22 @@
 # 42-vm-tutorial
-The goal of this tutorial is to setup a Ubuntu VM for you to have a nice
-programming environment. Once the VM is setup, you will be able to connect to it
-using VSCode's SSH extension or even program on directly if you like.
+This tutorial will guide you through the installation process of a Linux VM
+intended to be used as a programming environment.
 
 This tutorial assumes that you are using a Unix-based system i.e macOS or Linux.
 On macOS, I recommend using [UTM](https://mac.getutm.app/). Download it directly
 from the website or using Homebrew, since the version from the AppStore cost
 9.99 $ and is exactly the same as the free version. From now on all the steps
-about setting up the VM assume that you are using UTM.
+about setting up the VM assume that you are using UTM. 
 
-I recommend you choose a Linux distribution with a build that matches the host
-architecture. [Ubuntu Server](https://ubuntu.com/download/server) is probably
-what you want since it supports both x86_64 (Intel processors) and ARM64
-(Apple's M1/M2 processors). When creating the VM pick **Virtualize**, that way
+I recommend you choose a Linux distribution with a build that matches your
+computer's architecture. [Ubuntu Server](https://ubuntu.com/download/server) is
+what we will be using in this tutorial since it supports both x86_64 (Intel)
+and ARM64 (Apple's M1/M2). When creating the VM pick **Virtualize**, that way
 you will get near native performances in your VM.
 
-I recommend you give the VM 2048 Mb of RAM and 25-30 Gb of storage.
+I recommend you give the VM at least 2048 Mb of RAM and 30 Gb of storage. You
+could get away with less disk space but keep in mind that resizing the disk
+without reinstalling the VM can be a difficult process. 
 
 During installation leave everything to its default settings unless you know
 what you are doing. Select `Install OpenSSH server` during installation. If you
@@ -48,8 +49,14 @@ Host ubuntu # Replace with whatever name you see fit
     User matthieu # Replace with your username on the VM
 ```
 
-## Setup automatic login
-### Setup automatic login
+## Deploy the VM
+This repository contains a script called `deploy.sh` which will take care of
+most of the installation process. **Read the script before you run it.** Upon
+first login you can launch the following command to setup your VM:
+```sh
+curl https://raw.githubusercontent.com/foobarberis/42-vm-tutorial/main/deploy.sh >> deploy.sh && chmod +x deploy.sh && sudo ./deploy.sh
+```
+## Automatic login
 
 From [this forum post](https://forums.debian.net/viewtopic.php?t=123694).
 
@@ -69,31 +76,18 @@ ExecStart=-/sbin/agetty --autologin YOURUSERNAME --noclear %I $TERM
 
 Replace YOURUSERNAME with your user name. 
   
-### Automatic `startx`
+## Automatic `startx`
 For automatic `startx` add this snippet to the end of the file at `~/.profile`:
 
 ```
 [ "$(tty)" = "/dev/tty1" ] && exec startx
 ```
-
-
-**Note:** the following steps do not seem to be necessary.
-
-Finally, set the correct default.target to ensure the system boots to the console (TTY) rather than to a display manager:
-
-```
-# systemctl set-default multi-user.target
-```
-
-To reverse this change, reset the default.target with:
-
-```
-# systemctl set-default graphical.target
-```
-
-
 ## Git
-+ [[Setup Git credentials]]![[Set git credentials]]
+```sh
+git config --global credential.helper store
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
 
 ## Openbox
 Openbox is a lightweight and highly configurable window manager. When you launch
@@ -101,5 +95,15 @@ it, you will be greated by a black screen. Don't panic! By default Openbox has
 no menu bar or wallpaper. In order to bring up the lauch menu, right click on
 the screen and select the application you want from the menu.
 
+## VSCode
+In order to connect to your VM using VSCode you will need to install the first
+extension of the following list of recommended extensions:
++ [Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)
++ [Remote Explorer](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-explorer)
++ [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+  (if you want to have Intellisense other goodies you have to install this
+  extension on your VM too)
++ [42 Norminette Highlighter (3.x)](https://marketplace.visualstudio.com/items?itemName=MariusvanWijk-JoppeKoers.codam-norminette-3)
++ [42 Header](https://marketplace.visualstudio.com/items?itemName=kube.42header)
 + Setup proper resolution
 + Increase key repeat
