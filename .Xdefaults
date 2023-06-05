@@ -1,0 +1,4 @@
+xterm*faceName: Nimbus
+xterm*faceSize: 10
+xterm*renderFont: true
+xterm*locale: UTF-8
