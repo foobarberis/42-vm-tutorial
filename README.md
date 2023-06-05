@@ -70,9 +70,9 @@ of most of the installation process. **Read the script before you run the
 command below.**
 
 ```sh
-VERSION=0.1 && \
-wget https://github.com/foobarberis/42-vm-tutorial/releases/download/0.1/$VERSION.tar.gz && \
-tar xvf $VERSION.tar.gz && cd $VERSION && chmod +x deploy.sh && ./deploy.sh
+VERSION=vm-tutorial-0.1 && \
+wget https://github.com/foobarberis/42-vm-tutorial/releases/download/0.1/$VERSION.tar && \
+tar xvf $VERSION.tar && cd $VERSION && chmod +x deploy.sh && ./deploy.sh
 ```
 When the script is done, reboot the VM using `sudo reboot`. You should now
 be able to SSH into your VM using `ssh ubuntu`.
