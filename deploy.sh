@@ -28,4 +28,4 @@ mkdir -p $HOME/.config/openbox/ && cp ./menu.xml $HOME/.config/openbox/
 cp ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./.profile $HOME/
 
 # Reboot
-printf "\n\nDone! You can now reboot using sudo reboot\n'
+printf "\n\nDone! You can now reboot using sudo reboot\n"
