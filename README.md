@@ -83,11 +83,25 @@ For automatic `startx` add this snippet to the end of the file at `~/.profile`:
 [ "$(tty)" = "/dev/tty1" ] && exec startx
 ```
 ## Git
++ First of all go to this URL: https://github.com/settings/tokens
++ Click on `Generate new token` and pick `Generate new token (classic)`.
++ Give the token a name and expiration date.
++ Select only the first category of scopes (the one named `repo`) and click on
+  generate token.
++ Make sure you don't close the page since the token will be displayed only
+  once. If you loose it you have to create a new one.
++ Now run the following command. **Don't forget to replace the values as
+  necessary.** 
 ```sh
 git config --global credential.helper store
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
++ Now try to clone one of your private repositories or push to one of your
+  repositories. Git will ask you for you username and then for your password.
+**When asked for the passowrd paste the token you generated earlier.**
++ You should now be able to use git without having to re-enter your
+  credentials.
 
 ## Openbox
 Openbox is a lightweight and highly configurable window manager. When you launch
