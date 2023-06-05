@@ -14,7 +14,5 @@ sudo apt install -y gcc clang lldb gdb clang-format valgrind tmux git make vim p
 python3 -m pip install --upgrade pip setuptools && python3 -m pip install norminette
 
 git clone https://github.com/foobarberis/42-vm-tutorial /tmp/42-vm-tutorial && cd /tmp/42-vm-tutorial && \
-# Deploy new sshd_config
-sudo cp /etc/ssh/sshd_config $HOME/sshd_config.bak && sudo cp ./sshd_config /etc/ssh/sshd_config && \
 # Deploy new dotfiles
 cp ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./.profile $HOME/

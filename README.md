@@ -36,15 +36,17 @@ the `:` at the end.
   the `authorized_keys` file using `cat yourkey.pub >>
 .ssh/authorized_keys`. You can then delete the public key from the server
 using `rm yourkey.pub`.
-+ Make a copy of the `sshd_config` with `sudo cp /etc/ssh/sshd_config
-  /root/`.
-+ Edit the content of the SSH daemon configuration using `sudo nano
-  /etc/ssh/sshd_config` or `sudo vim /etc/ssh/sshd_config`.
-+ A configuration example can be found below.
-+ Once you have made changes in the `sshd_config` file, restart the daemon
-  using `sudo systemctl restart sshd`.
++ Read and then run the following command:
+```sh
+# Backup the original configuration
+sudo cp /etc/ssh/sshd_config $HOME/sshd_config.bak && \
+# Deploy our new configuration
+curl https://raw.githubusercontent.com/foobarberis/42-vm-tutorial/main/sshd_config >| /etc/ssh/sshd_config && \
+# Restart sshd
+sudo systemctl restart sshd
+```
 + To make connecting to your VM easier, create a file called `config` in
-  `.ssh` folder on your computer containing the following
+  `.ssh` folder on your computer containing the following:
 ```sh
 Host ubuntu # Replace with whatever name you see fit
     HostName 192.168.0.1 # Replace with your VM's IP
