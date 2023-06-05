@@ -125,6 +125,8 @@ using the middle mouse button.
 ## Setting up a proper resolution
 See : https://askubuntu.com/a/377944
 
+Check out `.xprofile` and `.bashrc` and modify them as you see fit.
+
 ## VSCode
 In order to connect to your VM using VSCode you will need to install the first
 extension of the following list of recommended extensions:
@@ -135,5 +137,3 @@ extension of the following list of recommended extensions:
   extension on your VM too)
 + [42 Norminette Highlighter (3.x)](https://marketplace.visualstudio.com/items?itemName=MariusvanWijk-JoppeKoers.codam-norminette-3)
 + [42 Header](https://marketplace.visualstudio.com/items?itemName=kube.42header)
-
-[[ -f ~/.Xdefaults ]] && xrdb ~/.Xdefaults
