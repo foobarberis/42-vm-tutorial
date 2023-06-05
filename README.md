@@ -1,4 +1,10 @@
 # 42-vm-tutorial
+
++ TODO Proofread
++ Why are gnome-terminal and urxvt pulled ?
++ Simplify `Deploy the VM' steps
++ Make Xterm launch when selecting Terminal emulator from Openbox menu
++
 This tutorial will guide you through the installation process of a Linux VM
 intended to be used as a programming environment.
 
@@ -13,16 +19,18 @@ computer's architecture. [Ubuntu
 Server](https://ubuntu.com/download/server) is what we will be using in
 this tutorial since it supports both x86_64 (Intel) and ARM64 (Apple's
 M1/M2). When creating the VM pick **Virtualize**, that way you will get
-near native performances in your VM.o
+near native performances in your VM.
 
-I recommend you give the VM at least 2048 Mb of RAM and 30 Gb of storage.
-You could get away with less disk space but keep in mind that resizing the
-disk without reinstalling the VM can be a difficult process.
+## Setting up the VM
+**I recommend you give the VM at least 2048 Mb of RAM and 30 Gb of
+storage.** You could probably get away with less disk space but keep in
+mind that resizing the disk without reinstalling the VM can be a difficult
+process. If your are short on RAM, you can probably allocate only 1024 Mb
+of RAM to the VM and still be fine.
 
 During installation leave everything to its default settings unless you
 know what you are doing. Select `Install OpenSSH server` during
-installation. If you forgot, run `sudo apt update && sudo apt upgrade &&
-sudo apt install openssh-server`.
+installation.
 
 ## SSH
 + On your computer, go into you `.ssh` folder with `cd ~/.ssh`. If the
@@ -68,11 +76,10 @@ Replace YOURUSERNAME with your user name.
 This repository contains a script called `deploy.sh` which will take care
 of most of the installation process. **Read the script before you run the
 command below.**
-
 ```sh
-VERSION=vm-tutorial-0.1 && \
-wget https://github.com/foobarberis/42-vm-tutorial/releases/download/0.1/$VERSION.tar && \
-tar xvf $VERSION.tar && cd $VERSION && chmod +x deploy.sh && ./deploy.sh
+sudo apt install git && \
+git clone https://github.com/foobarberis/42-vm-tutorial.git && \
+cd 42-vm-tutorial && chmod +x deploy.sh && ./deploy.sh
 ```
 When the script is done, reboot the VM using `sudo reboot`. You should now
 be able to SSH into your VM using `ssh ubuntu`.
