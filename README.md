@@ -52,15 +52,6 @@ Host ubuntu # Replace with whatever name you see fit
     User matthieu # Replace with your username on the VM
 ```
 
-## Deploy the VM
-This repository contains a script called `deploy.sh` which will take care of
-most of the installation process. **Read the script before you run it.** Upon
-first login you can launch the following command to setup your VM:
-```sh
-curl https://raw.githubusercontent.com/foobarberis/42-vm-tutorial/main/deploy.sh >> deploy.sh && \
-chmod +x deploy.sh && \
-sudo ./deploy.sh
-```
 ## Automatic login
 
 From [this forum post](https://forums.debian.net/viewtopic.php?t=123694).
@@ -87,6 +78,20 @@ For automatic `startx` add this snippet to the end of the file at `~/.profile`:
 ```
 [ "$(tty)" = "/dev/tty1" ] && exec startx
 ```
+
+The `.profile` in this repository already contains the line above. If you
+don't want to run `startx` when booting the VM, just comment the line.
+
+## Deploy the VM
+This repository contains a script called `deploy.sh` which will take care of
+most of the installation process. **Read the script before you run it.** Upon
+first login you can launch the following command to setup your VM:
+```sh
+curl https://raw.githubusercontent.com/foobarberis/42-vm-tutorial/main/deploy.sh >> deploy.sh && \
+chmod +x deploy.sh && ./deploy.sh
+```
+
+When the script is done, reboot the VM using `sudo reboot`.
 ## Git
 + First of all go to this URL: https://github.com/settings/tokens
 + Click on `Generate new token` and pick `Generate new token (classic)`.
