@@ -10,8 +10,6 @@
 # possible, but leave them commented.  Uncommented options override the
 # default value.
 
-Include /etc/ssh/sshd_config.d/*.conf
-
 Protocol 2
 
 Port 22 # Replace port 22 with a port between 1024 and 65536 and update the firewall accordingly.
