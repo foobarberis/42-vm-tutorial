@@ -16,7 +16,7 @@ sudo systemctl restart sshd
 # Update the system and install software
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install -y gcc clang lldb gdb clang-format valgrind tmux git make vim python3 python3-pip xterm libxext-dev libbsd-dev && \
-sudo apt install -y xserver-xorg-core && \
+sudo apt install -y xserver-xorg-core x11-xserver-utils && \
 sudo apt install -y openbox && \
 sudo apt install -y xinit
 
@@ -25,7 +25,7 @@ python3 -m pip install --upgrade pip setuptools && python3 -m pip install normin
 
 # Deploy new dotfiles
 mkdir -p $HOME/.config/openbox/ && cp ./menu.xml $HOME/.config/openbox/
-cp ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./.profile $HOME/
+cp ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./bash_profile ./.profile $HOME/
 
 # Reboot
 printf "\n\nDone! You can now reboot using sudo reboot\n"
