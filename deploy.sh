@@ -25,7 +25,7 @@ python3 -m pip install --upgrade pip setuptools && python3 -m pip install normin
 
 # Deploy new dotfiles
 mkdir -p $HOME/.config/openbox/ && cp ./menu.xml $HOME/.config/openbox/
-cp ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./bash_profile ./.profile $HOME/
+cp ./.tmux.conf ./.Xdefaults ./.xinitrc ./.xprofile ./.bashrc ./bash_profile ./.profile $HOME/
 
 # Reboot
 printf "\n\nDone! You can now reboot using sudo reboot\n"
